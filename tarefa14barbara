@@ -1,0 +1,163 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+Este é um arquivo de script temporário.
+
+Autor: barbara.barbosa
+"""
+
+"""
+4) Use o comando 'np.random.rand(N)' para gerar N números aleatórios entre 0 e 1.
+
+Faça o histograma e calcule (e mostre na tela) a média dos valores gerados.
+
+Faça isso para a) N = 100, N = 1000, c) N = 10000, d) N = 100000
+
+"""
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+
+x = np.random.randn(100)
+
+plt.figure()
+plt.hist(x)
+plt.show()
+print('Média de N=100 é ', np.mean(x))
+
+x1 = np.random.randn(1000)
+
+plt.figure()
+plt.hist(x1)
+plt.show()
+print('Média de N=1000 é ', np.mean(x1))
+
+x2 = np.random.randn(10000)
+
+plt.figure()
+plt.hist(x2)
+plt.show()
+print('Média de N=10000 é ', np.mean(x2))
+
+
+x3 = np.random.randn(100000)
+
+plt.figure()
+plt.hist(x3)
+plt.show()
+print('Média de N=100000 é ', np.mean(x3))
+
+"""
+
+1) Para este item você deverá usar o arquivo com dados de força e torque medidos
+ no chão enquanto uma pessoa tenta ficar em pé o mais parada possível durante um minuto.
+
+Faça o gráfico do torque na direção y (My [Nm]) em função do tempo (Time [s]).
+
+Mostre na tela a média e o desvio-padrão do torque na direção y.
+
+"""
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+inf = pd.read_csv('balance.csv')
+inf.head()
+
+
+plt.figure()
+plt.title('Gráfico do torque em função do tempo')
+plt.xlabel('my (Nm)')
+plt.ylabel('Tempo em segundos') 
+plt.grid()
+plt.plot(inf['My[Nm]'], inf['Time[s]'])
+
+mediaMyNm = inf['My[Nm]'].mean()
+print("A média do torque na direção y é",mediaMyNm)
+
+X = pd.DataFrame({'My[Nm]': x})
+X['My[Nm]'].std()
+X['My[Nm]'].var()
+
+
+"""
+2) Para este item você deverá usar o arquivo com a taxa de inflação mensal (IGP-DI) no Brasil de fevereiro de 1944 a junho de 2019 (dados disponibilizados por Ipeadata).
+
+Calcule a mediana da inflação mensal nos meses de março.
+
+Calcule a média da inflação mensal nos meses de março.
+
+Calcule o desvio-padrão da inflação mensal nos meses de março.
+
+Faça o histograma da inflação mensal nos meses de março.
+
+"""
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+infla = pd.read_csv('inflacaoMensal.csv')
+infla.head()
+
+
+medianaMês = infla[['Mês']==3].median()
+print(medianaMês)
+
+medianaInflaçãoMês = infla[infla['Mês']=='3']['Inflação'].median()
+print(medianaInflaçãoMês)
+
+mediaInflaçãoMês=infla[infla['Mês']=='3']['Inflação'].hist()
+print(mediaInflaçãoMês)
+
+plt.title('Histograma dos Meses de março')
+medianaMês = infla['Mês'==3].median().hist()
+
+
+
+
+
+"""
+3) Para este item você deverá usar o arquivo com a taxa de inflação mensal (IGP-DI) no Brasil
+ de fevereiro de 1944 a junho de 2019 (dados disponibilizados por Ipeadata).
+
+Calcule a mediana da inflação mensal nos meses de março a partir de 1995.
+
+Calcule a média da inflação mensal nos meses de março a partir de 1995.
+
+Calcule o desvio-padrão da inflação mensal nos meses de março a partir de 1995.
+
+Faça o histograma da inflação mensal nos meses de março a partir de 1995.
+
+Coloque um comentário no seu script comentando a razão da diferença entre a média 
+e a mediana ser alta no segundo item e baixa no terceiro item.
+"""
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+infla = pd.read_csv('inflacaoMensal.csv')
+infla.head()
+
+anos = np.arange (1994,2019,1)
+
+colunas = ['Inflação']
+x = pd.DataFrame(0, index=np.arange(1994, 2019, 1), columns=colunas)
+x['Anos'] = anos
+x
+
+medianaInflaçãoMês = infla[infla['Mês']=='3']['Inflação'].median()
+print(medianaInflaçãoMês)
+
+
+
+
